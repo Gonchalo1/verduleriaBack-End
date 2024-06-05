@@ -1,0 +1,46 @@
+dia7:
+luego de realizar el proyecto una y otra vez, pude solucionar el problema del php artisan
+route:list, básicamente copé y pegué el código en archivos generador con el mouse y no con la
+terminal, no lo encontraba por eso.
+
+
+dia8:
+finalmente he podido terminar con el registro de usuarios y aprendí el grán uso de la terminal,
+solo nesecito el login y saber como crear con migraciones la tabla de productos, y poblarla de productos
+valga la redundancia.
+
+
+dia9:
+finalmente y despues de tanto tiempo, ya cási tengo completado el back-end solo nesecito terminar que 
+los datos 
+de edad y género mandados a la tabla de productos no sean nulos, he aprendido la importancia de id y 
+los timestamps
+igualmente nesecito agregar una funcionalidad de actualizar así los usuarios cambian sus datos a lo 
+largo del
+tiempo, igualmente tengo que pensar si eso lo dejo en el back-end o lo hago desde el front-end o como 
+lo hago
+he ejecutado migraciones y poblado desde la terminal a la base de datos 😁
+SOY INVENCIBLE
+
+dia10:
+he hecho que se pueda mandar genero y edad, pero ahora me queda implementar la funcionalidad de crud,
+ voy a hacer una
+carpeta aparte y con eso generaré un archivo aparte para el crud, finalmente luego de implementar el 
+crud, voy a desarrollar 
+el front-end, cada vez estoy más cerca. 
+dia11:
+He logrado hacer funcionar el método index para retornar todos los ususarios, y el método show
+para retornar un usuario específico, asique dentro de poco voy a pdoer terminar el back-end
+me falta implementar el delete y el update.
+dia12:
+No pude programar una chota por los 20cv y el codo a codo
+dia13:
+El back-end está cási terminado, solo nesecito mandar el seeder de productos y ya está.
+dia14:
+Solucioné el problema, simplemente puse mal el nombre al factory, pero ahora tengo que agregar las imá-
+genes, las tengo que subír a la nube y dede ahí llamar a la nube para poner las url de las imágenes
+en las bases de datos.
+también tengo que modificar el modelo y las migraciones de productos, y seguramente alguna que otra
+cosa más.
+dia15:
+He terminado cási todo el back-end, nomas me falta el show por id.

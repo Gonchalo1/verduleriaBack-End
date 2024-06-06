@@ -1,24 +1,27 @@
-# Utilizamos una imagen base de PHP 7.4 con FPM
-FROM php:7.4-fpm
+# Use the official PHP image as a base image
+FROM php:8.1
 
-# Directorio de trabajo en el contenedor
+# Set the working directory in the container
 WORKDIR /var/www/html
 
-# Instalamos las dependencias necesarias para PostgreSQL
-RUN apt-get update && \
-    apt-get install -y \
+# Install dependencies
+RUN apt-get update && apt-get install -y \
     libpq-dev \
     && docker-php-ext-install pdo pdo_pgsql
 
-# Copiamos los archivos de la aplicación al contenedor
-COPY . .
-
-# Instalamos las dependencias de Composer
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Copy the composer.json and composer.lock files and install dependencies
+COPY composer.json composer.lock ./
+RUN composer install --no-scripts --no-autoloader
 
-# Exponemos el puerto 8000 para acceder a la aplicación
+# Copy the rest of the application code
+COPY . .
+
+# Generate the autoloader
+RUN composer dump-autoload --optimize
+
+# Expose port 8000 and start the PHP built-in server
 EXPOSE 8000
-
-# Comando por defecto para iniciar el servidor de Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

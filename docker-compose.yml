@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      command: "composer install"  # Se corrigió la ubicación del comando
     ports:
       - "8000:8000"
     volumes:

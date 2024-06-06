@@ -16,6 +16,9 @@ COPY . .
 # Instalamos las dependencias de Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+
+RUN composer self-update
+
 # Instalamos las dependencias del proyecto
 RUN composer install
 

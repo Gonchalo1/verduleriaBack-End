@@ -17,12 +17,6 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
-RUN composer self-update --2
-
-
-# Instalamos las dependencias del proyecto
-RUN composer install
-
 # Exponemos el puerto 8000 para acceder a la aplicación
 EXPOSE 8000
 

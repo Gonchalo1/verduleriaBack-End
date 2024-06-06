@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker.dockerfile  # Reemplaza con el nombre real de tu archivo Dockerfile
+      dockerfile: .Dockerfile  # Nuevo nombre del archivo Dockerfile
     container_name: laravel_app
     restart: unless-stopped
     ports:

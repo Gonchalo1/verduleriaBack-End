@@ -1,5 +1,5 @@
 # Use the official PHP image as a base image
-FROM php:8.1
+FROM php:8.0
 
 # Set the working directory in the container
 WORKDIR /var/www/html
@@ -7,6 +7,7 @@ WORKDIR /var/www/html
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    composer update --no-scripts --no-autoloader --verbose\
     && docker-php-ext-install pdo pdo_pgsql
 
 # Install Composer
@@ -15,11 +16,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy the composer.json and composer.lock files
 COPY composer.json composer.lock ./
 
-# Update Composer dependencies
-RUN composer update --no-scripts --no-autoloader --verbose
 
-# Install Composer dependencies
-RUN composer install --no-scripts --no-autoloader --verbose
 
 # Copy the rest of the application code
 COPY . .

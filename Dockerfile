@@ -4,25 +4,30 @@ FROM php:8.1-apache
 # Establece el directorio de trabajo
 WORKDIR /var/www/html
 
+# Instala Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Instala las dependencias necesarias
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    locales \
-    zip \
-    unzip \
-    git \
-    curl
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
-# Instala extensiones de PHP requeridas
-RUN docker-php-ext-install pdo_mysql mysqli mbstring exif pcntl bcmath gd
+# Instala extensiones de PHP requeridas manualmente
+RUN docker-php-source extract \
+    && apt-get install -y \
+        zlib1g-dev \
+        libzip-dev \
+        libxml2-dev \
+        libssl-dev \
+    && docker-php-ext-install pdo_mysql mysqli mbstring exif pcntl bcmath xml ctype json \
+    && docker-php-ext-enable openssl \
+    && docker-php-source delete
 
 # Habilita mod_rewrite de Apache
 RUN a2enmod rewrite
-
-# Instala Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copia el código de tu aplicación al contenedor
 COPY . /var/www/html

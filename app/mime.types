@@ -1,6 +1,8 @@
-text/html                           html htm shtml
-text/css                            css
-application/javascript              js
-image/gif                           gif
-image/jpeg                          jpeg jpg
-image/png                           png
+types {
+    text/html                           html htm shtml;
+    text/css                            css;
+    application/javascript              js;
+    image/gif                           gif;
+    image/jpeg                          jpeg jpg;
+    image/png                           png;
+}

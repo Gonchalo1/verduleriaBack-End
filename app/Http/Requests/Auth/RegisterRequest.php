@@ -26,9 +26,6 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:5|max:100|confirmed',
-
-            'gender' => ['required', 'string', Rule::in(['Masculino', 'Femenino'])],
-
             'age' => 'required|int|between:5,120',
             
         ];
